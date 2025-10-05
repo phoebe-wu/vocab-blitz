@@ -1,0 +1,15 @@
+**/.idea/workspace.xml
+**/.idea/usage.statistics.xml
+**/.idea/tasks.xml
+**/.idea/checkstyle-idea.xml
+**/.idea/shelf/
+
+# Node
+node_modules/
+coverage/
+dist/
+
+# Normal Things
+.DS_Store
+.env
+*.log
