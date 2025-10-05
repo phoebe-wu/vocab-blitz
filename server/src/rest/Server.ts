@@ -1,7 +1,7 @@
 import express, {Application, Request, Response} from "express";
 import * as http from "node:http";
 import cors from "cors";
-import Router from "./Router";
+import router from "./Router";
 
 export default class Server {
     private readonly port: number;
@@ -74,16 +74,7 @@ export default class Server {
 
     // Registers all request handlers to routes
     private registerRoutes() {
-        // This is an example endpoint this you can invoke by accessing this URL in your browser:
-        // http://localhost:4321/echo/hello
-        this.express.get("/echo/:msg", Router.echo);
-
-        // TODO: your other endpoints should go here
-        // this.express.put("/dataset/:id/:kind", Router.add);
-        // this.express.get("/datasets", Router.list);
-        // this.express.delete("/dataset/:id", Router.delete);
-        // this.express.post("/query", Router.query);
-
+        this.express.use("/api", router);
     }
 
 }

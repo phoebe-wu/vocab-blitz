@@ -1,3 +1,7 @@
+import dotenv from "dotenv"
+// Load .env
+dotenv.config();
+
 import Server from "./rest/Server"
 
 /**
