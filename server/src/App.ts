@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 // Load .env
 dotenv.config();
 
-import Server from "./rest/Server"
+import Server from "./Server"
 
 /**
  * Main app class that is run with the node command. Starts the server.

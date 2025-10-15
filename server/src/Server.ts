@@ -1,7 +1,8 @@
 import express, {Application, Request, Response} from "express";
 import * as http from "node:http";
 import cors from "cors";
-import router from "./Router";
+import router from "./routes/Router";
+import wordlists from "./routes/wordlists";
 
 export default class Server {
     private readonly port: number;
@@ -74,7 +75,8 @@ export default class Server {
 
     // Registers all request handlers to routes
     private registerRoutes() {
-        this.express.use("/api", router);
+        this.express.use("/test", router);
+        this.express.use("/words", wordlists);
     }
 
 }
