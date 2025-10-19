@@ -14,7 +14,7 @@ export class WordList implements Iterable<Word> {
         return this.entries.length;
     }
 
-    public async createWordList(name: string, words: Word[]): Promise<string> {
+    public static async createWordList(name: string, words: Word[]): Promise<string> {
         const client = await pool.connect();
         try {
             await client.query("BEGIN");
@@ -55,6 +55,21 @@ export class WordList implements Iterable<Word> {
         } catch (err) {
             await client.query('ROLLBACK');
             throw err;
+        } finally {
+            client.release();
+        }
+    }
+
+    public static async fetchWords(wordlist_id: string): Promise<Word[]> {
+        const client = await pool.connect();
+        try {
+            const res = await client.query(
+                `SELECT word, definition
+               FROM words
+               WHERE wordlist_id = $1`,
+                [wordlist_id]
+            )
+            return res.rows;
         } finally {
             client.release();
         }
